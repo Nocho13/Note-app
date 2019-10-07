@@ -16,7 +16,7 @@ UserSchema.methods.encryptPassword = async (password) => {
   return hash;
 };
 
-UserSchema.methods.matchPassword = async function (password) { // Emas5 podemos utilizar las propiedades del modelo
+UserSchema.methods.matchPassword = async function (password) { // con funciones normales podemos llamar this.password
   return await bcrypt.compare(password, this.password);
 };
 
