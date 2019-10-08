@@ -5,6 +5,10 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
+const morgan = require('morgan');
+const multer = require('multer');
+const uuid = require('uuid/v4');
+const { format } = require('timeago.js');
 
 // Initializations
 const app = express();
@@ -20,8 +24,9 @@ app.engine('.hbs', exphbs({
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs'
   }));
-  app.set('view engine', '.hbs');
-// middlewares
+app.set('view engine', '.hbs');
+// middlewares  se procesan antes de llegar a las rutas
+app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method')); //formularios metodos put,delete...
 app.use(session({
@@ -29,6 +34,16 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public/img/uploads'),
+  filename: (req, file, cb, filename) => {
+      console.log(file);
+      cb(null, uuid() + path.extname(file.originalname));
+  }
+}) 
+app.use(multer({storage}).single('image'));
+
          //passport despues de express
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,6 +62,7 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 app.use(require('./routes/users'));
 app.use(require('./routes/notes'));
+app.use(require('./routes/responsable'));
 
 
 // static files

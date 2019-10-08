@@ -30,6 +30,8 @@ router.post('/notes/new-note', isAuthenticated, async (req, res) => {
   } else {
     const newNote = new Note({title, description});
     newNote.user = req.user.id;
+    newNote.filename = req.file.filename;
+    newNote.path = '/img/uploads/'+ req.file.filename;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
     res.redirect('/notes');
@@ -53,10 +55,12 @@ router.get('/notes/edit/:id', isAuthenticated,  async (req, res) => {
 });
 
 router.put('/notes/edit-note/:id',  isAuthenticated, async (req, res) => {
-  const { title, description } = req.body;
-  await Note.findByIdAndUpdate(req.params.id, {title, description});
-  req.flash('success_msg', 'Note Updated Successfully');
-  res.redirect('/notes');
+  const { title, description} = req.body;
+  const filename = req.file.filename;
+  const path = '/img/uploads/'+ req.file.filename;
+    await Note.findByIdAndUpdate(req.params.id, {title, description, filename, path});
+    req.flash('success_msg', 'Note Updated Successfully');
+    res.redirect('/notes');
 });
 
 // Delete Notes

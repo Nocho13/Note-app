@@ -1,37 +1,50 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="/">Recuerdame App</a>
+    <a class="navbar-brand" href="/"><i class="fas fa-registered"></i>ecuerdameApp <img src="https://img.icons8.com/clouds/100/000000/brain.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <i class="fas fa-house-damage"></i><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="/about">About <i class="far fa-address-card"></i></a>
           </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         {{#if user}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Notes 
+              Notes <i class="fas fa-clipboard"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/notes">All Notes</a>
-              <a class="dropdown-item" href="/notes/add">Add A Note</a>
+              <a class="dropdown-item" href="/notes/add">Add A Note</a>           
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/users/logout">Logout</a>
+
             </div>
           </li>
-        {{else}}
-          <li class="nav-item">
-            <a class="nav-link" href="/users/signin">Login</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Responsable <i class="fas fa-user-shield"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/responsable">All Responsable</a>
+              <a class="dropdown-item" href="/responsable/add">Add A responsable</a>              
+              <div class="dropdown-divider"></div>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users/signup">Register</a>
+            <a class="nav-link" href="/users/logout">Logout <i class="fas fa-power-off"></i></a>       
+          </li>   
+        {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/signin">Login <i class="fas fa-sign-in-alt"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/signup">Register <i class="fas fa-user-plus"></i></a>
           </li>
         {{/if}}
       </ul>

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const NoteSchema = new Schema({
-  title: {
+const ResponsableSchema = new Schema({
+  nombre: {
     type: String,
     required: true
   },
-  description: {
+  numero: {
     type: String,
     required: true
   },
@@ -16,14 +16,10 @@ const NoteSchema = new Schema({
   path: {
     type: String
   },
-  date: {
-    type: Date,
-    default: Date.now
-  },
   user: {
     type: String,
     required: true
   }
 });
 
-module.exports = mongoose.model('Note', NoteSchema);
+module.exports = mongoose.model('Responsable', ResponsableSchema);

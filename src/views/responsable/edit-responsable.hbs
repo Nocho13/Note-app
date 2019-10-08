@@ -10,22 +10,22 @@
 <div class="col-md-4 mx-auto">
   <div class="card">
     <div class="card-header mx-auto">
-      <h3>Edit Note <img class="mx-auto d-block" src="https://img.icons8.com/clouds/100/000000/edit.png"></h3>
+      <h3>Edit Responsable <img class="mx-auto d-block" src="https://img.icons8.com/clouds/100/000000/edit.png"></h3>
     </div>
     <div class="card-body">
-      <form action="/notes/edit-note/{{note._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+      <form action="/responsable/edit-responsable/{{responsable._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
-          <input type="text" name="title" class="form-control" value="{{note.title}}"/>
+          <input type="text" name="nombre" class="form-control" value="{{responsable.nombre}}"/>
         </div>
         <div class="form-group">
-          <textarea name="description" class="form-control">{{note.description}}</textarea>
+          <input type="text" name="numero" class="form-control" value="{{responsable.numero}}"/>
         </div>
         <div class="input-group mb-3">
-          <input type="text" name="filename" class="form-control" value="{{ note.filename }}" hidden/>
+          <input type="text" name="filename" class="form-control" value="{{ responsable.filename }}" hidden/>
           <div class="custom-file">
             <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
-            <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">{{ note.filename }}</label>
+            <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">{{ responsable.filename }}</label>
           </div>
         </div>  
 
