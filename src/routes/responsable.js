@@ -21,6 +21,9 @@ router.post('/responsable/new-responsable', isAuthenticated, async (req, res) =>
   if (!numero) {
     errors.push({text: 'Please Write a Number'});
   }
+  if(!req.file){
+    errors.push({text: 'Please Update a Image'});
+  }
   if (errors.length > 0) {
     res.render('responsable/new-responsable', {
       errors,
@@ -56,8 +59,15 @@ router.get('/responsable/edit/:id', isAuthenticated,  async (req, res) => {
 
 router.put('/responsable/edit-responsable/:id',  isAuthenticated, async (req, res) => {
   const { nombre, numero } = req.body;
-  const filename = req.file.filename;
-  const path = '/img/uploads/'+ req.file.filename;
+  if(req.file){
+    console.log('definido');
+    filename = req.file.filename;
+    path = '/img/uploads/'+ filename;
+  }else{
+    console.log('no definido');
+    filename = req.body.filename;
+    path = '/img/uploads/'+ filename;
+  }
   await Responsable.findByIdAndUpdate(req.params.id, {nombre, numero, filename, path});
   req.flash('success_msg', 'Responsable Updated Successfully');
   res.redirect('/responsable');

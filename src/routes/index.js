@@ -9,4 +9,8 @@ router.get('/about', (req, res) => {
   res.render('about');
 });
 
+router.get('/ubicacion', (req, res) => {
+  res.render('ubicacion');
+});
+
 module.exports = router;

@@ -21,6 +21,9 @@ router.post('/notes/new-note', isAuthenticated, async (req, res) => {
   if (!description) {
     errors.push({text: 'Please Write a Description'});
   }
+  if(!req.file){
+    errors.push({text: 'Please Update a Image'});
+  }
   if (errors.length > 0) {
     res.render('notes/new-note', {
       errors,
@@ -56,11 +59,19 @@ router.get('/notes/edit/:id', isAuthenticated,  async (req, res) => {
 
 router.put('/notes/edit-note/:id',  isAuthenticated, async (req, res) => {
   const { title, description} = req.body;
-  const filename = req.file.filename;
-  const path = '/img/uploads/'+ req.file.filename;
-    await Note.findByIdAndUpdate(req.params.id, {title, description, filename, path});
-    req.flash('success_msg', 'Note Updated Successfully');
-    res.redirect('/notes');
+
+  if(req.file){
+    console.log('definido');
+    filename = req.file.filename;
+    path = '/img/uploads/'+ filename;
+  }else{
+    console.log('no definido');
+    filename = req.body.filename;
+    path = '/img/uploads/'+ filename;
+  }
+  await Note.findByIdAndUpdate(req.params.id, {title, description, filename, path});
+  req.flash('success_msg', 'Note Updated Successfully');
+  res.redirect('/notes');
 });
 
 // Delete Notes

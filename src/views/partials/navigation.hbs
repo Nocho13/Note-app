@@ -1,17 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="/"><i class="fas fa-registered"></i>ecuerdameApp <img src="https://img.icons8.com/clouds/100/000000/brain.png"></a>
+    <a class="navbar-brand" href="/"><img style="height: 40px; width: 40px;"  src="https://img.icons8.com/dusk/64/000000/registered-trademark.png">ecuerdameApp <img class="heartBeat" style="height: 80px; width: 80px;" src="https://img.icons8.com/clouds/100/000000/brain.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-          <li class="nav-item active">
+         {{#if user}}
+          <li class="nav-item active
+          ">
+            <a class="nav-link" href="/"><i class="fas fa-user-circle"></i> {{ user.name }}</i></a>
+          </li>   
+          {{/if}}      
+          <li class="nav-item ">
             <a class="nav-link" href="/">Home <i class="fas fa-house-damage"></i><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">About <i class="far fa-address-card"></i></a>
-          </li>
+          </li>   
+          <li class="nav-item">
+            <a class="nav-link" href="/ubicacion">Ubicacion <i class="fas fa-map-marker-alt"></i></a>
+          </li>                  
       </ul>
       <ul class="navbar-nav ml-auto">
         {{#if user}}
@@ -51,3 +60,4 @@
     </div>
   </div>
 </nav>
+<div style="height: 70px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C150.96,140.63 271.49,-49.98 514.39,70.55 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #343c3c;"></path></svg></div>

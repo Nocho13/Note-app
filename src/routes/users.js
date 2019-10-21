@@ -49,7 +49,7 @@ router.post('/users/signin', passport.authenticate('local', {
 
 router.get('/users/logout', (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out now.');
+  req.flash('error_msg', 'You are logged out now.');
   res.redirect('/users/signin');
 });
 
