@@ -18,7 +18,7 @@
     </div>
   </div>
   {{else}}
-  <div class="card mx-auto">
+  <div class="card col-md-3">
     <div class="card-body">
       <h1>Hello {{user.name}}</h1>
       <p clsss="lead">There are not Notes yet.</p>
@@ -26,12 +26,9 @@
     </div>
   </div>
   {{/each}}
-  <div class="col-md-3 ">
-    <div class="card">
-      <div class="card-body mx-auto text-center ">
-          <h6 class="card-title ">AGREGAR</h1>
-          <a href="/notes/add"><img class="card-img-top" style="height: 80px; width: 80px;" src="https://img.icons8.com/clouds/100/000000/add.png"></i></a>
-      </div>
+  <div class="col-md-3">
+    <div class="card-body text-center">
+            <a href="/notes/add"><img class="card-img-top" style="height: 80px; width: 80px;" src="https://img.icons8.com/clouds/100/000000/add.png"></i></a>
     </div>
   </div>
 </div>
